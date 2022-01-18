@@ -2,7 +2,6 @@ const express = require('express')
 const router = express.Router()
 const Wishlist = require('../models/wishlists')
 
-
 router.post('/', async(req, res)=>{
     let wishlist = await Wishlist.findOne({user : req.body.user})
 
@@ -21,6 +20,7 @@ router.post('/', async(req, res)=>{
         return res.status(201).send(wishlist)
     }
 })
+
 router.patch('/', async(req, res)=>{
     let wishlist = await Wishlist.findOne({user : req.body.user})
 
@@ -38,6 +38,11 @@ router.patch('/', async(req, res)=>{
         wishlist = await Wishlist.create(req.body);  
         return res.status(201).send(wishlist)
     }
+})
+
+router.get('/:userId', async (req, res)=>{
+    const wishlist = await Wishlist.findOne({user : req.params.userId}).populate('products').lean().exec();
+    res.status(200).send(wishlist)
 })
 
 module.exports = router
