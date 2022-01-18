@@ -7,7 +7,6 @@ app.use('/user', userController)
 
 const productController = require('./controllers/products')
 app.use('/product', productController)
-app.use('/', productController)
 
 const cartController = require('./controllers/carts')
 app.use('/cart', cartController)
