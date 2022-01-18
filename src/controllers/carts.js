@@ -11,13 +11,13 @@ router.post('/', async(req, res)=>{
     // add to cart
     if(cart){
         let itemIndex = cart.products.findIndex(p=>p.product == productId)
-        console.log('index' ,itemIndex)
         
         if(itemIndex >=0){
             cart.products[itemIndex].quantity+=1 //increase quantity
         } else{
             cart.products.push(req.body.products)
         }
+        
         cart = await cart.save()
         return res.status(200).send(cart)
     } else {

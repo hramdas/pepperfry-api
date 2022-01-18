@@ -8,9 +8,9 @@ const productSchema = new mongoose.Schema({
     details : {
         brand : {type : String},
         weight : {type : Number},
-        warranty :  {type : Number},
-        seller : {type : mongoose.Schema.Types.ObjectId, ref:'sellers'}
-    }
+        warranty :  {type : Number}
+    },
+    seller : {type : mongoose.Schema.Types.ObjectId, ref:'sellers'}
 },{
     versionKey : false
 })
