@@ -3,11 +3,9 @@ const router = expresss.Router()
 const User = require('../models/users')
 
 router.post("/signup", async (req, res)=>{
-    console.log(req.body)
     try{
         let user = await User.findOne({email : req.body.email}).lean().exec()
-
-        if(user) return user.statue(400).send({status : failed, message : "User already registered"})
+        if(user) return res.status(400).send({status : "failed", message : "User already registered"})
 
         user = await User.create(req.body);
 

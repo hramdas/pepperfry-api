@@ -11,5 +11,7 @@ app.use('/product', productController)
 const cartController = require('./controllers/carts')
 app.use('/cart', cartController)
 
-module.exports = app
+const widhlistController = require('./controllers/wishlists')
+app.use('/wishlist', widhlistController)
+
 module.exports = app
