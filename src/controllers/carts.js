@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const Cart = require('../models/cart');
+const Cart = require('../models/carts');
 const products = require('../models/products');
 
 //Add item to users cart
@@ -32,12 +32,9 @@ router.get('/:userId', async (req, res)=>{
     res.status(200).send(cart)
 })
 
-
 router.get('/', async (req, res)=>{
     const cart = await Cart.find().populate('user').lean().exec();
     res.status(200).send(cart)
 })
-
-
 
 module.exports = router
