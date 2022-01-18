@@ -17,7 +17,7 @@ userSchema.pre('save', function(next){
     })
 })
 
-userSchema.methods.chechPassword = function (password){
+userSchema.methods.checkPassword = function (password){
     return new Promise((resolve, reject)=>{
         bcryptjs.compare(password, this.password, function(err, same){
             if(err) return reject(err)
@@ -25,5 +25,4 @@ userSchema.methods.chechPassword = function (password){
         })
     })
 }
-
 module.exports = mongoose.model('user', userSchema)
