@@ -1,9 +1,9 @@
 const express = require('express')
-const connect = require('./configs/db')
-const app = require('./index')
+const connect = require('./src/configs/db')
+const app = require('./src/index')
 const port =  process.env.PORT || 3000
 
-app.listen(5000, async ()=>{
+app.listen(port, async ()=>{
     await connect()
     console.log("Listening on port 3000")
 })
