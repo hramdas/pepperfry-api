@@ -15,7 +15,7 @@ router.get('/:id', async(req, res)=>{
 //get all
 router.get('/', async(req, res)=>{
     const products = await Product.find()
-    return res.status(200).send(products)
+    return res.status(200).json(products)
 })
 
 //update
