@@ -34,7 +34,8 @@ router.post('/login', async (req, res)=>{
 
 router.get('', async(req, res)=>{
     let user = await User.find().lean().exec();
-    res.status(200).send(user)
+   
+    res.status(200).json(user)
 })
 
 module.exports = router
