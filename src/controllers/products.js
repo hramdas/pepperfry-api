@@ -8,6 +8,16 @@ router.post('/', async(req, res)=>{
     res.status(201).send(product)
 })
 
+router.get('/tag', async(req,res)=>{
+    let tagname = req.query.name;
+    if(tagname){
+        let product = await Product.find({tag : tagname})
+        return res.status(200).send(product)
+    }
+    let product = await Product.find()
+    return res.status(200).send(product)
+})
+
 router.get('/:id', async(req, res)=>{
     const product = await Product.findById(req.params.id)
     return res.status(200).send(product)

@@ -6,11 +6,10 @@ router.post('/', async(req, res)=>{
     let wishlist = await Wishlist.findOne({user : req.body.user})
 
     if(wishlist){
-        let liststatus = wishlist.products.findIndex(p=>{
-            p == req.body.product
-        })
-       
-        if(liststatus < 0){
+        let itemIndex = wishlist.products.findIndex(p=> p == req.body.products)
+        // console.log(req.body.products, wishlist.products)
+
+        if(itemIndex < 0){
             wishlist.products.push(req.body.products)
         }
         wishlist = await wishlist.save()
